@@ -16,11 +16,11 @@ class ContactsApp:
         self.root = root
         self.root.title("Contacts App")
         self.root.geometry("800x600")
-        self.root.minsize(800, 600) #Minimum size to avoid layout breakage
+        self.root.minsize(800, 600) # Minimum size to avoid layout breakage
         
         # Load and set the backgroud image
         self.bg_image_path = "background.jpg"
-        self.bg_image = Image.open("C:/Users/my/OneDrive/University Data/Year 2/Algorithms & Data Structures/Contacts-App/Contacts-App/background.jpg")
+        self.bg_image = Image.open("background.jpg")
         self.bg_photo = ImageTk.PhotoImage(self.bg_image)
         
         # Create a Canvas to hold the background image
@@ -33,14 +33,14 @@ class ContactsApp:
         # Bind resizing event to adjust the background image
         self.root.bind("<Configure>", self.resize_background)
         
-        #Contacts Dictionary
+        # Contacts Dictionary
         self.contacts = {}
         
-        #Title Label
+        # Title Label
         self.title_label = tk.Label(root, text="Contacts App", font=("Helvetica", 24, "bold"), fg="white", bg="#5C6BC0")
         self.title_label.place(relx=0.5, rely=0.05, anchor="center")
         
-        #Input Frame
+        # Input Frame
         self.input_frame = tk.Frame(root, bg="#06BDFF", bd=5)
         self.input_frame.place(relx=0.5, rely= 0.2, relwidth=0.9, relheight=0.2, anchor="center")
         
@@ -56,10 +56,10 @@ class ContactsApp:
         self.email_entry = tk.Entry(self.input_frame, font=("Arial", 14))
         self.email_entry.grid(row=2, column=1, padx=10, pady=5, sticky="we")
         
-        #Adjust Column and Row Weight for Resizing
+        # Adjust Column and Row Weight for Resizing
         self.input_frame.columnconfigure(1, weight=1)
         
-        #Button Frame
+        # Button Frame
         self.button_frame = tk.Frame(root, bg="#06BDFF", bd=5)
         self.button_frame.place(relx=0.5, rely=0.45, relwidth=0.9, relheight=0.1, anchor="center")
         
@@ -72,7 +72,7 @@ class ContactsApp:
         self.delete_button = tk.Button(self.button_frame, text="Delete Contact", font=("Arial", 12, "bold"), bg="#F44336", fg="white", command=self.delete_contact)
         self.delete_button.pack(side="left", expand=True, padx=10)
         
-        #Contacts List Frame
+        # Contacts List Frame
         self.contacts_frame = tk.Frame(root, bg="#E8EAF6", bd=5)
         self.contacts_frame.place(relx=0.5, rely=0.7, relwidth=0.9, relheight=0.25, anchor="center")
         
@@ -92,7 +92,7 @@ class ContactsApp:
         self.bg_photo = ImageTk.PhotoImage(resized_image)
         self.canvas.itemconfig(self.bg_image_on_canvas, image=self.bg_photo)
     
-    #Add/Update Contact Method
+    # Add/Update Contact Method
     def add_or_update_contact(self):
         name = self.name_entry.get().strip()
         phone = self.phone_entry.get().strip()
@@ -110,7 +110,7 @@ class ContactsApp:
         else:
             messagebox.showerror("Error", "All Fields are required!")
     
-    #Delete Contact Method
+    # Delete Contact Method
     def delete_contact(self):
         selected_item = self.contacts_tree.selection()
         if selected_item:
@@ -152,7 +152,7 @@ class ContactsApp:
         self.email_entry.delete(0, tk.END)
         
 
-#Main Application
+# Main Application
 if __name__ == "__main__":
     root = tk.Tk()
     app = ContactsApp(root)
